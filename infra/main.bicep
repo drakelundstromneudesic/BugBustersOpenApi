@@ -1,8 +1,7 @@
 param location string = resourceGroup().location
 
-
 resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
-  name: 'hackAppPlan'
+  name: 'FrontEndAppSerivcePlan'
   location: location
   sku: {
     name: 'F1'
@@ -11,7 +10,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
 }
 
 resource appService 'Microsoft.Web/sites@2020-06-01' = {
-  name: 'hackAppFrontend-eastus-A01' 
+  name: 'BugBustersFrontEnd'
   location: location
   properties: {
     serverFarmId: appServicePlan.id
@@ -19,7 +18,7 @@ resource appService 'Microsoft.Web/sites@2020-06-01' = {
 }
 
 resource backendAppServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
-  name: 'hackAppBackendPlan'
+  name: 'BugBustersBackEnd'
   location: location
   sku: {
     name: 'F1'
@@ -28,7 +27,7 @@ resource backendAppServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
 }
 
 resource backendAppService 'Microsoft.Web/sites@2020-06-01' = {
-  name: 'hackAppBackend-eastus-A01'
+  name: 'BackEndAppSerivcePlan'
   location: location
   properties: {
     serverFarmId: backendAppServicePlan.id

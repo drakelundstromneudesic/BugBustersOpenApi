@@ -28,7 +28,7 @@ jobs:
         run: |
           az logout
   build:
-    name: build-infraa
+    name: build-infra
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main 

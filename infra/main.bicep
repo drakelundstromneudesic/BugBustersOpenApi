@@ -18,7 +18,7 @@ resource appService 'Microsoft.Web/sites@2020-06-01' = {
 }
 
 resource backendAppServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
-  name: 'BugBustersBackEnd'
+  name: 'BackEndAppSerivcePlan'
   location: location
   sku: {
     name: 'F1'
@@ -27,7 +27,7 @@ resource backendAppServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
 }
 
 resource backendAppService 'Microsoft.Web/sites@2020-06-01' = {
-  name: 'BackEndAppSerivcePlan'
+  name: 'BugBustersBackEnd'
   location: location
   properties: {
     serverFarmId: backendAppServicePlan.id

@@ -1,11 +1,11 @@
 name: deploy frontend
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: ["deploy service"]
-    branches: ["main"]
-    types:
-      - completed
+  push:
+    branches:
+      - "main"
+    paths:
+      - "src/frontend"
 env:
   NODE_VERSION: "14.x"
   AZURE_WEBAPP_NAME: BugBustersFrontEnd

@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - "main"
-    paths:
-      - "src/frontend"
 env:
   NODE_VERSION: "14.x"
   AZURE_WEBAPP_NAME: BugBustersFrontEnd

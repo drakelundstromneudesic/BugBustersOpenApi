@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - "main"
-    paths:
-      - "src/api"
 env:
   DOTNET_VERSION: "5.0.x"
   AZURE_WEBAPP_NAME: BugBustersBackEnd

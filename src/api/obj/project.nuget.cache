@@ -1,8 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "gqqL+U/B0vTKZikm21BZtLRpusg/t2Txj2WAUso007zYWDj+vYNvfDZUD0hgK4pD1vxtX5c3pwMkK6OFXoFoGw==",
+  "dgSpecHash": "KWF9Hl6+I5i8+PE2YJGkNmrOF3shMOsIc/Qan3JGgeZPdLu2NbHhErn1w5zXUuNBxa+uKWb4JJD6wdITez6V7w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nick.Ferritto\\BugBustersOpenApi\\src\\api\\api.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\projects\\BugBustersOpenApi\\src\\api\\api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\restsharp\\109.0.1\\restsharp.109.0.1.nupkg.sha512",
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\system.text.json\\7.0.2\\system.text.json.7.0.2.nupkg.sha512",
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+  ],
   "logs": []
 }

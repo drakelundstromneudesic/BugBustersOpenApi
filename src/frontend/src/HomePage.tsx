@@ -1,6 +1,4 @@
-import { useState } from "react";
 import logo from "./Neudesic-Logo.jpg";
-import { useForm } from "react-hook-form";
 import { getRecommendation } from "./Services/OpenAIService";
 
 export const HomePage = (): JSX.Element => {

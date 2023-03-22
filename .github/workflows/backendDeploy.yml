@@ -1,11 +1,11 @@
 name: deploy backend
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: ["deploy service"]
-    branches: ["main"]
-    types:
-      - completed
+  push:
+    branches:
+      - "main"
+    paths:
+      - "src/api"
 env:
   DOTNET_VERSION: "5.0.x"
   AZURE_WEBAPP_NAME: BugBustersBackEnd

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ucUEneXI5EkxtSSxuxeMgD++lWwt2AAfC3eR6WPZfzxItOTHZn4a2fmHYUFZD++4YexwkAa9MxPFnfjJMUNQWQ==",
+  "dgSpecHash": "gqqL+U/B0vTKZikm21BZtLRpusg/t2Txj2WAUso007zYWDj+vYNvfDZUD0hgK4pD1vxtX5c3pwMkK6OFXoFoGw==",
   "success": true,
-  "projectFilePath": "C:\\projects\\BugBustersOpenApi\\src\\api\\api.csproj",
+  "projectFilePath": "C:\\Users\\Nick.Ferritto\\BugBustersOpenApi\\src\\api\\api.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

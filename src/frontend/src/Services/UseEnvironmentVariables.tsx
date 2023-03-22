@@ -5,7 +5,7 @@ export type EnvironmentVariables = {
 export const UseEnvironmentVariables = (): EnvironmentVariables => {
   const checkedApiURI = window.location.hostname.includes("localhost")
     ? "https://api.openai.com/v1/chat"
-    : "https://okrneudesictest.azurewebsites.net";
+    : "https://bugbustersbackend.azurewebsites.net/";
   const EnvironmentVars: EnvironmentVariables = {
     apiUri: checkedApiURI,
   };

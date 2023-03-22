@@ -105,4 +105,5 @@ dist
 # VS Code Files
 .vscode/
 
-src/api/obj*
+src/api/obj/*
+src/api/bin/*

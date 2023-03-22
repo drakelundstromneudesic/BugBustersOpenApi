@@ -7,12 +7,12 @@ namespace api.Models
 {
     public class OpenAiPostResponse
     {
-        public string Id { get; set; }
+        public string id { get; set; }
         public string Object { get; set; }
         public DateTime Created { get; set; }
-        public string Model { get; set; }
-        public UsageObject Usage { get; set; }
-        public ChoicesObject Choices { get; set; }
+        public string model { get; set; }
+        public UsageObject usage { get; set; }
+        public List<MessageObject> choices { get; set; }
     }
 
     public class UsageObject
@@ -22,10 +22,17 @@ namespace api.Models
         public int total_tokens { get; set; }
     }
 
+    public class MessageObject
+    {
+        public ChoicesObject message { get; set; }
+        public string finish_reason { get; set; }
+        public int index { get; set; }
+    }
+
     public class ChoicesObject
     {
-        public string Role { get; set; }
-        public string Content { get; set; }
+        public string role { get; set; }
+        public string content { get; set; }
     }
 }
 

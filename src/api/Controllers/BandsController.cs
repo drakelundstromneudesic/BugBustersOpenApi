@@ -8,6 +8,8 @@ using System.Net;
 using System.Reflection;
 using RestSharp;
 using api.Models;
+using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace api.Controllers
 {
@@ -30,13 +32,13 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public IActionResult OpenAiTest()
+        public async Task<IActionResult> OpenAiTest()
         {
             Uri baseUrl = new Uri("https://api.openai.com/v1/chat");
             IRestClient client = new RestClient(baseUrl);
-            RestRequest request = new RestRequest("get", Method.Post);
+            RestRequest request = new RestRequest("completions", Method.Post);
 
-            request.AddHeader("Authorization", "Bearer XXXX");
+            request.AddHeader("Authorization", "Bearer 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");
             request.AddHeader("Content-Type", "application/json");
 
             MessagesObject message = new MessagesObject("user", "I like the bands Britney Spears, and christina aguilera.   What bands would you recommend listening to?  Format as json with the fields likes, dislikes, and recommendations");
@@ -44,11 +46,15 @@ namespace api.Controllers
 
             OpenAiPostRequest requestBody = new OpenAiPostRequest("gpt-3.5-turbo", new List<MessagesObject> { message });
 
+            request.AddBody(requestBody);
+
+            
             RestResponse<OpenAiPostResponse> response = await client.ExecuteAsync<OpenAiPostResponse>(request);
 
+            
+            OpenAiPostResponse res = JsonSerializer.Deserialize<OpenAiPostResponse>(response.Content);
 
-
-
+            return Ok(res.choices[0].message.content);
 
             //    namespace RestSharpThingy
             //{
@@ -169,7 +175,7 @@ namespace api.Controllers
             //    }
             //}
 
-
-
         }
+
     }
+}

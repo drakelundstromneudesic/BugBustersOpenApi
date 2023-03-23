@@ -10,6 +10,7 @@ using RestSharp;
 using api.Models;
 using System.Threading.Tasks;
 using System.Text.Json;
+using Microsoft.Extensions.Configuration;
 
 namespace api.Controllers
 {
@@ -17,10 +18,11 @@ namespace api.Controllers
     [ApiController]
     public class BandsController : Controller
     {
+        private readonly IConfiguration Configuration;
 
-        public BandsController()
+        public BandsController(IConfiguration configuration)
         {
-
+            Configuration = configuration;
         }
 
         [HttpPost]
@@ -38,7 +40,9 @@ namespace api.Controllers
             IRestClient client = new RestClient(baseUrl);
             RestRequest request = new RestRequest("completions", Method.Post);
 
-            request.AddHeader("Authorization", "Bearer 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");
+            string authToken = Configuration["Test_String"];
+
+            request.AddHeader("Authorization", $"Bearer {authToken}");
             request.AddHeader("Content-Type", "application/json");
 
             MessagesObject message = new MessagesObject("user", "I like the bands Britney Spears, and christina aguilera.   What bands would you recommend listening to?  Format as json with the fields likes, dislikes, and recommendations");

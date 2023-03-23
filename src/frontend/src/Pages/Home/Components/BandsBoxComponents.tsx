@@ -13,7 +13,6 @@ import {
 } from "../../../Style/Colors";
 
 const BandsBox = styled.div`
-  width: 100%;
   margin: 10px;
   border-radius: 10px;
   padding: 10px;
@@ -33,8 +32,9 @@ export const RecommendedBandsBox = styled(BandsBox)`
 `;
 
 export const BandBox = styled.div`
-  width: 70px;
   display: flexbox;
+  justify-content: center;
+  padding: 5px;
   flex-wrap: wrap;
   border-radius: 10px;
   border-color: ${BLACK};

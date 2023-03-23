@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
+import { BLACK, LIGHT_TURQUOISE, SILVER } from "../../../Style/Colors";
 
 type BandInputProps = {
   readonly bandList: string[];
@@ -33,8 +34,14 @@ export const BandInput = ({
 
 const StyledForm = styled.form`
   display: flexbox;
+  justify-content: center;
+  padding: 5px;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  border-color: ${BLACK};
+  border-width: 1px;
+  border-style: solid;
+  background-color: ${LIGHT_TURQUOISE};
 `;
 
-const StyledInput = styled.input`
-  width: 50px;
-`;
+const StyledInput = styled.input``;

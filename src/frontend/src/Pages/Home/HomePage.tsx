@@ -1,5 +1,5 @@
 import logo from "./Neudesic-Logo.jpg";
-import { getRecommendation } from "./Services/OpenAIService";
+import { getRecommendation } from "../../Services/OpenAIService";
 
 export const HomePage = (): JSX.Element => {
   const PrintResponse = async () => {

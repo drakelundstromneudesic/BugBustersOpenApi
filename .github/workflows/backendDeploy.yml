@@ -59,7 +59,7 @@ jobs:
           [
               {
                   "name": "TEST_STRING",
-                  "value": "${{ secrets.TEST_STRING }}",
+                  "value": "${{ secrets.OPEN_AI_TOKEN }}",
                   "slotSetting": false
               }
           ]

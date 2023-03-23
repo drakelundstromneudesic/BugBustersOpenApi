@@ -55,3 +55,11 @@ jobs:
         with:
           app-name: ${{env.AZURE_WEBAPP_NAME}}
           package: ./backend-api
+        app-settings-json: |
+          [
+              {
+                  "name": "TEST_STRING",
+                  "value": "${{ secrets.TEST_STRING }}",
+                  "slotSetting": false
+              }
+          ]

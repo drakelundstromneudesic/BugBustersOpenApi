@@ -70,7 +70,7 @@ namespace api.Controllers
 
             if (requestIn.Recommendations.Count == 1)
             {
-                messageUsedRecommendations = $"Do not include the band {requestIn.Dislikes[0]} in your recommendations. ";
+                messageUsedRecommendations = $"Do not include the band {requestIn.Recommendations[0]} in your recommendations. ";
             }
             else if (requestIn.Recommendations.Count > 1)
             {

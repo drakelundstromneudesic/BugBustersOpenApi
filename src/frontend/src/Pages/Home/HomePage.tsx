@@ -2,10 +2,10 @@ import logo from "../../Neudesic-Logo.jpg";
 import styled from "styled-components";
 import { SILVER } from "../../Style/Colors";
 
-import { getRecommendation } from "../../Services/OpenAIService";
+import { getRecommendation } from "../../Services/BandService";
 import { useState } from "react";
-import { text } from "stream/consumers";
 import { BandInput } from "./Components/BandInput";
+import { RecommendationRequest } from '../../Models/RecommendationRequest';
 import {
   BandBox,
   DisikedBandsBox,
@@ -17,20 +17,6 @@ import {
 } from "./Components/BandsBoxComponents";
 
 export const HomePage = (): JSX.Element => {
-  const PrintResponse = async () => {
-    const aiResponse = await getRecommendation();
-    console.log(aiResponse);
-  };
-
-  const TestHooks = () => {
-    console.log("LikedBands");
-    console.log(LikedBands);
-    console.log("DislikedBands");
-    console.log(DislikedBands);
-    console.log("RecommendedBands");
-    console.log(RecommendedBands);
-  };
-
   const [LikedBands, setLikedBands] = useState<string[]>([]);
   const [DislikedBands, setDislikedBands] = useState<string[]>([]);
   const [RecommendedBands, setRecommendedBands] = useState<string[]>([]);
@@ -64,6 +50,12 @@ export const HomePage = (): JSX.Element => {
     likeBand(band);
   };
 
+  const generateRecommendations = async () => {
+    const data: RecommendationRequest = {"likes": LikedBands, "dislikes": DislikedBands, "recommendations": RecommendedBands};
+    const updatedRecommendations: RecommendationRequest = await getRecommendation(data)
+    setRecommendedBands(updatedRecommendations.recommendations)
+  }
+
   return (
     <>
       <img src={logo} className="App-logo" alt="logo" />
@@ -73,10 +65,7 @@ export const HomePage = (): JSX.Element => {
         <ColumnTitle>Recommended Bands</ColumnTitle>
         <BandInput bandList={LikedBands} setBandList={setLikedBands} />
         <BandInput bandList={DislikedBands} setBandList={setDislikedBands} />
-        <BandInput
-          bandList={RecommendedBands}
-          setBandList={setRecommendedBands}
-        />
+        <StyledLikeButton onClick={() => generateRecommendations()}> Generate Recommendations</StyledLikeButton>
         <LikedBandsBox>
           {LikedBands.map((band) => (
             <BandBox>
@@ -121,9 +110,6 @@ export const HomePage = (): JSX.Element => {
         </RecommendedBandsBox>
         <></>
       </BandGrid>
-      <button onClick={() => PrintResponse()}>PrintResponse </button>
-
-      <button onClick={() => TestHooks()}>Test Button</button>
     </>
   );
 };

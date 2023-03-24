@@ -17,10 +17,16 @@ export const BandInput = ({
 }: BandInputProps): JSX.Element => {
   const { handleSubmit, register } = useForm<Band>();
 
+  const addBand = (band: Band) => {
+    if (bandList.findIndex((x) => x == band.name) == -1) {
+      setBandList([...bandList, band.name]);
+    }
+  };
+
   return (
     <StyledForm
-      onSubmit={handleSubmit((Band) => {
-        setBandList([...bandList, Band.name]);
+      onSubmit={handleSubmit((band) => {
+        addBand(band);
       })}
     >
       <StyledInput

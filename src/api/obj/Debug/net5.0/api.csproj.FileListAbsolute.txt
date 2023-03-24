@@ -100,3 +100,9 @@ C:\Users\Nick.Ferritto\BugBustersOpenApi\src\api\obj\Debug\net5.0\refint\api.dll
 C:\Users\Nick.Ferritto\BugBustersOpenApi\src\api\obj\Debug\net5.0\api.pdb
 C:\Users\Nick.Ferritto\BugBustersOpenApi\src\api\obj\Debug\net5.0\api.genruntimeconfig.cache
 C:\Users\Nick.Ferritto\BugBustersOpenApi\src\api\obj\Debug\net5.0\ref\api.dll
+C:\Users\Nick.Ferritto\BugBustersOpenApi\src\api\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Nick.Ferritto\BugBustersOpenApi\src\api\bin\Debug\net5.0\RestSharp.dll
+C:\Users\Nick.Ferritto\BugBustersOpenApi\src\api\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Nick.Ferritto\BugBustersOpenApi\src\api\bin\Debug\net5.0\System.Text.Encodings.Web.dll
+C:\Users\Nick.Ferritto\BugBustersOpenApi\src\api\bin\Debug\net5.0\System.Text.Json.dll
+C:\Users\Nick.Ferritto\BugBustersOpenApi\src\api\obj\Debug\net5.0\api.csproj.CopyComplete

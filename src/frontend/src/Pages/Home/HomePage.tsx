@@ -51,7 +51,7 @@ export const HomePage = (): JSX.Element => {
   };
   const recommendedToDislike = (band: string) => {
     removedRecommendedBand(band);
-    likeBand(band);
+    dislikeBand(band);
   };
 
   const likeToDislike = (band: string) => {

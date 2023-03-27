@@ -98,7 +98,6 @@ export const HomePage = (): JSX.Element => {
         </StyledGenerateButton>
         <LikedBandsBox>
           {likedBands.map((band) => (
-            // { band == 'Britney Spears' ?
             <>
               {band == focusForDetails.name ? (
                 <BandBox>
@@ -106,7 +105,9 @@ export const HomePage = (): JSX.Element => {
                   {focusForDetails.description == "" ? (
                     <LoadingImage src={loading} alt="loading" />
                   ) : (
-                    <p>{focusForDetails.description}</p>
+                    <DescriptionText>
+                      {focusForDetails.description}
+                    </DescriptionText>
                   )}
 
                   <StyledDislikeButton onClick={() => likeToDislike(band)}>
@@ -211,6 +212,10 @@ const HeaderImage = styled.img`
 const LoadingImage = styled.img`
   width: 10vw;
   height: 3vw;
+`;
+
+const DescriptionText = styled.div`
+  text-size: 0.5vw;
 `;
 
 export const StyledGenerateButton = styled.button`

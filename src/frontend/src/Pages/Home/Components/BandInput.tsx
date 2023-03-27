@@ -15,7 +15,7 @@ export const BandInput = ({
   bandList,
   setBandList,
 }: BandInputProps): JSX.Element => {
-  const { handleSubmit, register } = useForm<Band>();
+  const { handleSubmit, register, reset } = useForm<Band>();
 
   const addBand = (band: Band) => {
     if (bandList.findIndex((x) => x == band.name) == -1) {
@@ -27,6 +27,7 @@ export const BandInput = ({
     <StyledForm
       onSubmit={handleSubmit((band) => {
         addBand(band);
+        reset()
       })}
     >
       <StyledTextInput

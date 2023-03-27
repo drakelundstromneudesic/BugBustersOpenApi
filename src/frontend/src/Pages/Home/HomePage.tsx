@@ -1,6 +1,6 @@
 import logo from "../../Neudesic-Logo.jpg";
 import styled from "styled-components";
-import { SILVER } from "../../Style/Colors";
+import { SILVER, WHITE } from "../../Style/Colors";
 
 import { getRecommendation } from "../../Services/BandService";
 import { useState } from "react";
@@ -12,6 +12,7 @@ import {
   LikedBandsBox,
   RecommendedBandsBox,
   StyledDislikeButton,
+  StyledGenerateButton,
   StyledLikeButton,
   StyledRemoveButton,
 } from "./Components/BandsBoxComponents";
@@ -58,14 +59,16 @@ export const HomePage = (): JSX.Element => {
 
   return (
     <>
-      <img src={logo} className="App-logo" alt="logo" />
+      <Header>
+        <img src={logo} className="App-logo" alt="logo" />
+      </Header>
       <BandGrid>
         <ColumnTitle>Liked Bands</ColumnTitle>
         <ColumnTitle>Disliked Bands</ColumnTitle>
         <ColumnTitle>Recommended Bands</ColumnTitle>
         <BandInput bandList={LikedBands} setBandList={setLikedBands} />
         <BandInput bandList={DislikedBands} setBandList={setDislikedBands} />
-        <StyledLikeButton onClick={() => generateRecommendations()}> Generate Recommendations</StyledLikeButton>
+        <StyledGenerateButton onClick={() => generateRecommendations()}> Generate Recommendations</StyledGenerateButton>
         <LikedBandsBox>
           {LikedBands.map((band) => (
             <BandBox>
@@ -117,11 +120,18 @@ export const HomePage = (): JSX.Element => {
 const BandGrid = styled.div`
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  column-gap: 1vw;
+  column-gap: .5%;
   background-color: ${SILVER};
   width: 90vw;
   align-content: center;
   color: black;
 `;
 
-const ColumnTitle = styled.h1``;
+const Header = styled.div`
+  background-color: ${WHITE};
+  align-content: center;
+  color: black;
+  width: 90vw;
+`;
+
+const ColumnTitle = styled.h2``;

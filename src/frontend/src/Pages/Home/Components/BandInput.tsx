@@ -29,7 +29,7 @@ export const BandInput = ({
         addBand(band);
       })}
     >
-      <StyledInput
+      <StyledTextInput
         type={"text"}
         {...register("name", { required: true, max: 100 })}
       />
@@ -39,15 +39,30 @@ export const BandInput = ({
 };
 
 const StyledForm = styled.form`
-  display: flexbox;
+  display: flex;
   justify-content: center;
-  padding: 5px;
+  padding: 10px;
   flex-wrap: wrap;
   border-radius: 10px;
   border-color: ${BLACK};
   border-width: 1px;
   border-style: solid;
   background-color: ${LIGHT_TURQUOISE};
+  margin: 2px;
 `;
 
-const StyledInput = styled.input``;
+const StyledInput = styled.input`
+  border-radius: 5px;
+  border-width: 1px;
+  margin: 0px 3px;
+  font-size: 18px;
+  width: 16%;
+`;
+
+const StyledTextInput = styled.input`
+  border-radius: 5px;
+  margin: 0px 3px;
+  border-width: 1px;
+  width: 60%;
+  font-size: 20px;
+`;

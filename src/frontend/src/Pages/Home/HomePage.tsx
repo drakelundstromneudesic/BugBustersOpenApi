@@ -215,7 +215,7 @@ const LoadingImage = styled.img`
 `;
 
 const DescriptionText = styled.div`
-  text-size: 0.5vw;
+  font-size: 11px;
 `;
 
 export const StyledGenerateButton = styled.button`

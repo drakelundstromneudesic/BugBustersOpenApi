@@ -21,7 +21,7 @@ namespace api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostRecommendations(PostRecommendBandRequest requestIn)
+        public async Task<IActionResult> PostRecommendations(PostRecommendBands requestIn)
         {
             string messageLikes = "";
             string messageDislikes = "";
@@ -98,6 +98,20 @@ namespace api.Controllers
 
             return Ok(res.choices[0].message.content);
         }
+
+        [HttpPost("details")]
+        public async Task<IActionResult> PostDetails(PostBandDetails requestIn)
+        {
+            string message = $"Give me a short description of the band {requestIn.Name} and their 3 best songs for a new listener.";
+
+            OpenAiPostResponse res = await CallOpenAi(message);
+
+            PostBandDetails response = requestIn;
+            response.Description = res.choices[0].message.content;
+
+            return Ok(response);
+        }
+
 
         private async Task<OpenAiPostResponse>  CallOpenAi(string messageBody)
         {

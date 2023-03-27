@@ -3,7 +3,7 @@ import loading from "../../loading-gif.gif";
 import styled from "styled-components";
 import { BLACK, GREEN, LIGHT_GREEN, SILVER, WHITE } from "../../Style/Colors";
 
-import { getRecommendation } from "../../Services/BandService";
+import { getDetails, getRecommendation } from "../../Services/BandService";
 import { useState } from "react";
 import { BandInput } from "./Components/BandInput";
 import { RecommendationRequest } from "../../Models/RecommendationRequest";
@@ -16,12 +16,17 @@ import {
   StyledLikeButton,
   StyledRemoveButton,
 } from "./Components/BandsBoxComponents";
+import { BandDetails } from "../../Models/BandDetails";
 
 export const HomePage = (): JSX.Element => {
   const [likedBands, setLikedBands] = useState<string[]>([]);
   const [dislikedBands, setDislikedBands] = useState<string[]>([]);
   const [recommendedBands, setRecommendedBands] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [focusForDetails, setFocusForDetails] = useState<BandDetails>({
+    name: "qwe",
+    description: "ert",
+  });
 
   const likeBand = (band: string) => setLikedBands([...likedBands, band]);
   const removedLikedBand = (band: string) =>
@@ -65,6 +70,18 @@ export const HomePage = (): JSX.Element => {
     setRecommendedBands(updatedRecommendations.recommendations);
   };
 
+  const showDetails = async (band: string) => {
+    const currentBandDetails: BandDetails = { name: band, description: "" };
+    setFocusForDetails(currentBandDetails);
+    const updatedBandDetails: BandDetails = await getDetails(
+      currentBandDetails
+    );
+    setFocusForDetails(updatedBandDetails);
+  };
+  const hideDetails = () => {
+    setFocusForDetails({ name: "", description: "" });
+  };
+
   return (
     <>
       <Header>
@@ -81,15 +98,42 @@ export const HomePage = (): JSX.Element => {
         </StyledGenerateButton>
         <LikedBandsBox>
           {likedBands.map((band) => (
-            <BandBox>
-              {band}
-              <StyledDislikeButton onClick={() => likeToDislike(band)}>
-                dislike
-              </StyledDislikeButton>
-              <StyledRemoveButton onClick={() => removedLikedBand(band)}>
-                remove
-              </StyledRemoveButton>
-            </BandBox>
+            // { band == 'Britney Spears' ?
+            <>
+              {band == focusForDetails.name ? (
+                <BandBox>
+                  <h3>{band}</h3>
+                  {focusForDetails.description == "" ? (
+                    <LoadingImage src={loading} alt="loading" />
+                  ) : (
+                    <p>{focusForDetails.description}</p>
+                  )}
+
+                  <StyledDislikeButton onClick={() => likeToDislike(band)}>
+                    dislike
+                  </StyledDislikeButton>
+                  <StyledRemoveButton onClick={() => hideDetails()}>
+                    show less
+                  </StyledRemoveButton>
+                  <StyledRemoveButton onClick={() => removedLikedBand(band)}>
+                    remove
+                  </StyledRemoveButton>
+                </BandBox>
+              ) : (
+                <BandBox>
+                  {band}
+                  <StyledDislikeButton onClick={() => likeToDislike(band)}>
+                    dislike
+                  </StyledDislikeButton>
+                  <StyledRemoveButton onClick={() => showDetails(band)}>
+                    show more
+                  </StyledRemoveButton>
+                  <StyledRemoveButton onClick={() => removedLikedBand(band)}>
+                    remove
+                  </StyledRemoveButton>
+                </BandBox>
+              )}
+            </>
           ))}
         </LikedBandsBox>
         <DisikedBandsBox>

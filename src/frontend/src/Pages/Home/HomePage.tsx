@@ -173,6 +173,10 @@ export const StyledGenerateButton = styled.button`
   width: 60%;
   margin: 0% 20%;
   font-size: 20px;
+  border: 2px solid;
+  border-radius: 50px;
+  padding: 4px 12px;
+  width: fit-content;
   justify-content: center;
   background-color: ${LIGHT_GREEN};
   color: ${BLACK};

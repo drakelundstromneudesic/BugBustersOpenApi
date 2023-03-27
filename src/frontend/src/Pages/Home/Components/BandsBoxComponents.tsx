@@ -17,6 +17,7 @@ const BandsBox = styled.div`
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0px 0px 5px ${(props) => addOpacityToColor(BLACK, 0.8)};
+  min-height: 70px;
 `;
 
 export const LikedBandsBox = styled(BandsBox)`
@@ -40,7 +41,6 @@ export const BandBox = styled.div`
   border-color: ${BLACK};
   background-color: ${CREAM};
   margin: 5px;
-  min-height: 40px;
 `;
 
 const StyledButton = styled.button`

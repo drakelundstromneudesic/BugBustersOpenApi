@@ -1,7 +1,7 @@
 import logo from "../../Neudesic-Logo.jpg";
 import loading from "../../loading-gif.gif";
 import styled from "styled-components";
-import { SILVER } from "../../Style/Colors";
+import { SILVER, WHITE } from "../../Style/Colors";
 
 import { getRecommendation } from "../../Services/BandService";
 import { useState } from "react";
@@ -13,6 +13,7 @@ import {
   LikedBandsBox,
   RecommendedBandsBox,
   StyledDislikeButton,
+  StyledGenerateButton,
   StyledLikeButton,
   StyledRemoveButton,
 } from "./Components/BandsBoxComponents";
@@ -67,16 +68,18 @@ export const HomePage = (): JSX.Element => {
 
   return (
     <>
-      <HeaderImage src={logo} alt="Neudesic Logo" />
+      <Header>
+        <HeaderImage src={logo} alt="Neudesic Logo" />
+      </Header>
       <BandGrid>
         <ColumnTitle>Liked Bands</ColumnTitle>
         <ColumnTitle>Disliked Bands</ColumnTitle>
         <ColumnTitle>Recommended Bands</ColumnTitle>
         <BandInput bandList={likedBands} setBandList={setLikedBands} />
         <BandInput bandList={dislikedBands} setBandList={setDislikedBands} />
-        <StyledLikeButton onClick={() => generateRecommendations()}>
+        <StyledGenerateButton onClick={() => generateRecommendations()}>
           Generate Recommendations
-        </StyledLikeButton>
+        </StyledGenerateButton>
         <LikedBandsBox>
           {likedBands.map((band) => (
             <BandBox>
@@ -138,11 +141,17 @@ export const HomePage = (): JSX.Element => {
 const BandGrid = styled.div`
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  column-gap: 1vw;
+  column-gap: 0.5%;
   background-color: ${SILVER};
   width: 90vw;
   align-content: center;
   color: black;
+`;
+const Header = styled.div`
+  background-color: ${WHITE};
+  align-content: center;
+  color: black;
+  width: 90vw;
 `;
 
 const ColumnTitle = styled.div`
@@ -152,7 +161,8 @@ const ColumnTitle = styled.div`
 `;
 
 const HeaderImage = styled.img`
-  height: 40vmin;
+  height: 20vmin;
+  pointer-events: none;
 `;
 
 const LoadingImage = styled.img`

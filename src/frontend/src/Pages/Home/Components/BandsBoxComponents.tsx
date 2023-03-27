@@ -40,6 +40,7 @@ export const BandBox = styled.div`
   border-color: ${BLACK};
   background-color: ${CREAM};
   margin: 5px;
+  min-height: 40px;
 `;
 
 const StyledButton = styled.button`
@@ -67,15 +68,4 @@ export const StyledRemoveButton = styled(StyledButton)`
   background-color: ${GREY};
   color: ${BLACK};
   border-color: ${SILVER};
-`;
-
-
-export const StyledGenerateButton = styled(StyledButton)`
-  width: 60%;
-  margin: 0% 20%;
-  font-size: 20px;
-  justify-content: center;
-  background-color: ${LIGHT_GREEN};
-  color: ${BLACK};
-  border-color: ${GREEN};
 `;

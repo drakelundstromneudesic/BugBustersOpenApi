@@ -1,7 +1,7 @@
 import logo from "../../Neudesic-Logo.jpg";
 import loading from "../../loading-gif.gif";
 import styled from "styled-components";
-import { SILVER, WHITE } from "../../Style/Colors";
+import { BLACK, GREEN, LIGHT_GREEN, SILVER, WHITE } from "../../Style/Colors";
 
 import { getRecommendation } from "../../Services/BandService";
 import { useState } from "react";
@@ -13,7 +13,6 @@ import {
   LikedBandsBox,
   RecommendedBandsBox,
   StyledDislikeButton,
-  StyledGenerateButton,
   StyledLikeButton,
   StyledRemoveButton,
 } from "./Components/BandsBoxComponents";
@@ -168,4 +167,14 @@ const HeaderImage = styled.img`
 const LoadingImage = styled.img`
   width: 10vw;
   height: 3vw;
+`;
+
+export const StyledGenerateButton = styled.button`
+  width: 60%;
+  margin: 0% 20%;
+  font-size: 20px;
+  justify-content: center;
+  background-color: ${LIGHT_GREEN};
+  color: ${BLACK};
+  border-color: ${GREEN};
 `;

@@ -92,37 +92,16 @@ namespace api.Controllers
 
 
             string finalMessage = messageLikes + messageDislikes + messageUsedRecommendations + messageEnd;
-            // MessagesObject message = new MessagesObject("user", "I like the bands Britney Spears, and christina aguilera.   What bands would you recommend listening to?  Format as json with the fields likes, dislikes, and recommendations");
 
 
-            Uri baseUrl = new Uri("https://api.openai.com/v1/chat");
-            IRestClient client = new RestClient(baseUrl);
-            RestRequest request = new RestRequest("completions", Method.Post);
-
-            string authToken = Configuration["Test_String"];
-
-            request.AddHeader("Authorization", $"Bearer {authToken}");
-            request.AddHeader("Content-Type", "application/json");
-
-            MessagesObject message = new MessagesObject("user", finalMessage);
-
-
-            OpenAiPostRequest requestBody = new OpenAiPostRequest("gpt-3.5-turbo", new List<MessagesObject> { message });
-
-            request.AddBody(requestBody);
-
-
-            RestResponse<OpenAiPostResponse> response = await client.ExecuteAsync<OpenAiPostResponse>(request);
-
-
-            OpenAiPostResponse res = JsonSerializer.Deserialize<OpenAiPostResponse>(response.Content);
+            OpenAiPostResponse res = await CallOpenAi(finalMessage);
 
             return Ok(res.choices[0].message.content);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> OpenAiTest()
+        private async Task<OpenAiPostResponse>  CallOpenAi(string messageBody)
         {
+
             Uri baseUrl = new Uri("https://api.openai.com/v1/chat");
             IRestClient client = new RestClient(baseUrl);
             RestRequest request = new RestRequest("completions", Method.Post);
@@ -132,7 +111,7 @@ namespace api.Controllers
             request.AddHeader("Authorization", $"Bearer {authToken}");
             request.AddHeader("Content-Type", "application/json");
 
-            MessagesObject message = new MessagesObject("user", "I like the bands Britney Spears, and christina aguilera.   What bands would you recommend listening to?  Format as json with the fields likes, dislikes, and recommendations");
+            MessagesObject message = new MessagesObject("user", messageBody);
 
 
             OpenAiPostRequest requestBody = new OpenAiPostRequest("gpt-3.5-turbo", new List<MessagesObject> { message });
@@ -145,7 +124,7 @@ namespace api.Controllers
 
             OpenAiPostResponse res = JsonSerializer.Deserialize<OpenAiPostResponse>(response.Content);
 
-            return Ok(res.choices[0].message.content);
+            return res;
 
         }
 

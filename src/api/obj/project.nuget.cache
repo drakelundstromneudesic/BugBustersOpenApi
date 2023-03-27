@@ -1,18 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "gVpv2gikT7nA9Mj9+RM4/Fh9+6rccE5UalKRuoveWLzO1+6PySGwRvZHwqbCL9oKQ33xS3EtdZ3vPeh59mUUAw==",
+  "dgSpecHash": "KWF9Hl6+I5i8+PE2YJGkNmrOF3shMOsIc/Qan3JGgeZPdLu2NbHhErn1w5zXUuNBxa+uKWb4JJD6wdITez6V7w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nick.Ferritto\\BugBustersOpenApi\\src\\api\\api.csproj",
+  "projectFilePath": "C:\\projects\\BugBustersOpenApi\\src\\api\\api.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Nick.Ferritto\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
-    "C:\\Users\\Nick.Ferritto\\.nuget\\packages\\restsharp\\109.0.1\\restsharp.109.0.1.nupkg.sha512",
-    "C:\\Users\\Nick.Ferritto\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
-    "C:\\Users\\Nick.Ferritto\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
-    "C:\\Users\\Nick.Ferritto\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
-    "C:\\Users\\Nick.Ferritto\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
-    "C:\\Users\\Nick.Ferritto\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
-    "C:\\Users\\Nick.Ferritto\\.nuget\\packages\\system.text.json\\7.0.2\\system.text.json.7.0.2.nupkg.sha512",
-    "C:\\Users\\Nick.Ferritto\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\restsharp\\109.0.1\\restsharp.109.0.1.nupkg.sha512",
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\system.text.json\\7.0.2\\system.text.json.7.0.2.nupkg.sha512",
+    "C:\\Users\\Drake.Lundstrom\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
   ],
   "logs": []
 }

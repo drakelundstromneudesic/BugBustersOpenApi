@@ -1,11 +1,12 @@
 import logo from "../../Neudesic-Logo.jpg";
+import loading from "../../loading-gif.gif";
 import styled from "styled-components";
 import { SILVER } from "../../Style/Colors";
 
 import { getRecommendation } from "../../Services/BandService";
 import { useState } from "react";
 import { BandInput } from "./Components/BandInput";
-import { RecommendationRequest } from '../../Models/RecommendationRequest';
+import { RecommendationRequest } from "../../Models/RecommendationRequest";
 import {
   BandBox,
   DisikedBandsBox,
@@ -17,19 +18,20 @@ import {
 } from "./Components/BandsBoxComponents";
 
 export const HomePage = (): JSX.Element => {
-  const [LikedBands, setLikedBands] = useState<string[]>([]);
-  const [DislikedBands, setDislikedBands] = useState<string[]>([]);
-  const [RecommendedBands, setRecommendedBands] = useState<string[]>([]);
+  const [likedBands, setLikedBands] = useState<string[]>([]);
+  const [dislikedBands, setDislikedBands] = useState<string[]>([]);
+  const [recommendedBands, setRecommendedBands] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const likeBand = (band: string) => setLikedBands([...LikedBands, band]);
+  const likeBand = (band: string) => setLikedBands([...likedBands, band]);
   const removedLikedBand = (band: string) =>
-    setLikedBands([...LikedBands].filter((name) => name !== band));
+    setLikedBands([...likedBands].filter((name) => name !== band));
   const dislikeBand = (band: string) =>
-    setDislikedBands([...DislikedBands, band]);
+    setDislikedBands([...dislikedBands, band]);
   const removedDisikedBand = (band: string) =>
-    setDislikedBands([...DislikedBands].filter((name) => name !== band));
+    setDislikedBands([...dislikedBands].filter((name) => name !== band));
   const removedRecommendedBand = (band: string) =>
-    setRecommendedBands([...RecommendedBands].filter((name) => name !== band));
+    setRecommendedBands([...recommendedBands].filter((name) => name !== band));
 
   const recommendedToLike = (band: string) => {
     removedRecommendedBand(band);
@@ -51,23 +53,32 @@ export const HomePage = (): JSX.Element => {
   };
 
   const generateRecommendations = async () => {
-    const data: RecommendationRequest = {"likes": LikedBands, "dislikes": DislikedBands, "recommendations": RecommendedBands};
-    const updatedRecommendations: RecommendationRequest = await getRecommendation(data)
-    setRecommendedBands(updatedRecommendations.recommendations)
-  }
+    setIsLoading(true);
+    const data: RecommendationRequest = {
+      likes: likedBands,
+      dislikes: dislikedBands,
+      recommendations: recommendedBands,
+    };
+    const updatedRecommendations: RecommendationRequest =
+      await getRecommendation(data);
+    setIsLoading(false);
+    setRecommendedBands(updatedRecommendations.recommendations);
+  };
 
   return (
     <>
-      <img src={logo} className="App-logo" alt="logo" />
+      <HeaderImage src={logo} alt="Neudesic Logo" />
       <BandGrid>
         <ColumnTitle>Liked Bands</ColumnTitle>
         <ColumnTitle>Disliked Bands</ColumnTitle>
         <ColumnTitle>Recommended Bands</ColumnTitle>
-        <BandInput bandList={LikedBands} setBandList={setLikedBands} />
-        <BandInput bandList={DislikedBands} setBandList={setDislikedBands} />
-        <StyledLikeButton onClick={() => generateRecommendations()}> Generate Recommendations</StyledLikeButton>
+        <BandInput bandList={likedBands} setBandList={setLikedBands} />
+        <BandInput bandList={dislikedBands} setBandList={setDislikedBands} />
+        <StyledLikeButton onClick={() => generateRecommendations()}>
+          Generate Recommendations
+        </StyledLikeButton>
         <LikedBandsBox>
-          {LikedBands.map((band) => (
+          {likedBands.map((band) => (
             <BandBox>
               {band}
               <StyledDislikeButton onClick={() => likeToDislike(band)}>
@@ -80,7 +91,7 @@ export const HomePage = (): JSX.Element => {
           ))}
         </LikedBandsBox>
         <DisikedBandsBox>
-          {DislikedBands.map((band) => (
+          {dislikedBands.map((band) => (
             <BandBox>
               {band}
               <StyledLikeButton onClick={() => dislikeToLike(band)}>
@@ -93,20 +104,30 @@ export const HomePage = (): JSX.Element => {
           ))}
         </DisikedBandsBox>
         <RecommendedBandsBox>
-          {RecommendedBands.map((band) => (
-            <BandBox>
-              {band}
-              <StyledLikeButton onClick={() => recommendedToLike(band)}>
-                like
-              </StyledLikeButton>
-              <StyledDislikeButton onClick={() => recommendedToDislike(band)}>
-                dislike
-              </StyledDislikeButton>
-              <StyledRemoveButton onClick={() => removedRecommendedBand(band)}>
-                remove
-              </StyledRemoveButton>
-            </BandBox>
-          ))}
+          {isLoading ? (
+            <LoadingImage src={loading} alt="loading" />
+          ) : (
+            <>
+              {recommendedBands.map((band) => (
+                <BandBox>
+                  {band}
+                  <StyledLikeButton onClick={() => recommendedToLike(band)}>
+                    like
+                  </StyledLikeButton>
+                  <StyledDislikeButton
+                    onClick={() => recommendedToDislike(band)}
+                  >
+                    dislike
+                  </StyledDislikeButton>
+                  <StyledRemoveButton
+                    onClick={() => removedRecommendedBand(band)}
+                  >
+                    remove
+                  </StyledRemoveButton>
+                </BandBox>
+              ))}
+            </>
+          )}
         </RecommendedBandsBox>
         <></>
       </BandGrid>
@@ -124,4 +145,17 @@ const BandGrid = styled.div`
   color: black;
 `;
 
-const ColumnTitle = styled.h1``;
+const ColumnTitle = styled.div`
+  font-size: 2vw;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+`;
+
+const HeaderImage = styled.img`
+  height: 40vmin;
+`;
+
+const LoadingImage = styled.img`
+  width: 10vw;
+  height: 3vw;
+`;

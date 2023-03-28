@@ -24,7 +24,7 @@ export const LikedBandsBoxFormatting = styled(BandsBox)`
   background-color: ${LIGHT_GREEN};
 `;
 
-export const DisikedBandsBoxFormatting = styled(BandsBox)`
+export const DislikedBandsBoxFormatting = styled(BandsBox)`
   background-color: ${LIGHT_RED};
 `;
 

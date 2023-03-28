@@ -17,7 +17,7 @@ import { BandInput } from "./Components/BandInput";
 import { RecommendationRequest } from "../../Models/RecommendationRequest";
 import {
   BandBox,
-  DisikedBandsBoxFormatting,
+  DislikedBandsBoxFormatting,
   LoadingImage,
   RecommendedBandsBoxFormatting,
   StyledDislikeButton,
@@ -26,6 +26,7 @@ import {
 } from "./Components/BandsBoxComponents";
 import { BandDetails } from "../../Models/BandDetails";
 import { LikedBandsBox } from "./Components/LikedBandsBox";
+import { DislikedBandsBox } from "./Components/DislikedBandsBox";
 
 export const HomePage = (): JSX.Element => {
   const [likedBands, setLikedBands] = useState<string[]>([]);
@@ -128,7 +129,15 @@ export const HomePage = (): JSX.Element => {
           removedLikedBand={removedLikedBand}
           showDetails={showDetails}
         />
-        <DisikedBandsBoxFormatting>
+        <DislikedBandsBox
+          focusForDetails={focusForDetails}
+          hideDetails={hideDetails}
+          dislikeToLike={dislikeToLike}
+          dislikedBands={dislikedBands}
+          removedDislikedBand={removedDisikedBand}
+          showDetails={showDetails}
+        />
+        {/* <DisikedBandsBoxFormatting>
           {dislikedBands.map((band) => (
             <BandBox>
               {band}
@@ -140,7 +149,7 @@ export const HomePage = (): JSX.Element => {
               </StyledRemoveButton>
             </BandBox>
           ))}
-        </DisikedBandsBoxFormatting>
+        </DisikedBandsBoxFormatting> */}
         <RecommendedBandsBoxFormatting>
           {isLoading ? (
             <LoadingImage src={loading} alt="loading" />

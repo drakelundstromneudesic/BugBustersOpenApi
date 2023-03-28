@@ -17,14 +17,15 @@ import { BandInput } from "./Components/BandInput";
 import { RecommendationRequest } from "../../Models/RecommendationRequest";
 import {
   BandBox,
-  DisikedBandsBox,
-  LikedBandsBox,
-  RecommendedBandsBox,
+  DisikedBandsBoxFormatting,
+  LoadingImage,
+  RecommendedBandsBoxFormatting,
   StyledDislikeButton,
   StyledLikeButton,
   StyledRemoveButton,
 } from "./Components/BandsBoxComponents";
 import { BandDetails } from "../../Models/BandDetails";
+import { LikedBandsBox } from "./Components/LikedBandsBox";
 
 export const HomePage = (): JSX.Element => {
   const [likedBands, setLikedBands] = useState<string[]>([]);
@@ -81,7 +82,7 @@ export const HomePage = (): JSX.Element => {
       setRecommendedBands(updatedRecommendations.recommendations);
     } else {
       setGenerateButtonError(
-        "please add a liked band before using this button"
+        "Please add a liked band before using this button"
       );
     }
   };
@@ -119,48 +120,15 @@ export const HomePage = (): JSX.Element => {
             <></>
           )}
         </div>
-        <LikedBandsBox>
-          {likedBands.map((band) => (
-            <>
-              {band == focusForDetails.name ? (
-                <BandBox>
-                  <h3>{band}</h3>
-                  {focusForDetails.description == "" ? (
-                    <LoadingImage src={loading} alt="loading" />
-                  ) : (
-                    <DescriptionText>
-                      {focusForDetails.description}
-                    </DescriptionText>
-                  )}
-
-                  <StyledDislikeButton onClick={() => likeToDislike(band)}>
-                    dislike
-                  </StyledDislikeButton>
-                  <StyledRemoveButton onClick={() => hideDetails()}>
-                    show less
-                  </StyledRemoveButton>
-                  <StyledRemoveButton onClick={() => removedLikedBand(band)}>
-                    remove
-                  </StyledRemoveButton>
-                </BandBox>
-              ) : (
-                <BandBox>
-                  {band}
-                  <StyledDislikeButton onClick={() => likeToDislike(band)}>
-                    dislike
-                  </StyledDislikeButton>
-                  <StyledRemoveButton onClick={() => showDetails(band)}>
-                    show more
-                  </StyledRemoveButton>
-                  <StyledRemoveButton onClick={() => removedLikedBand(band)}>
-                    remove
-                  </StyledRemoveButton>
-                </BandBox>
-              )}
-            </>
-          ))}
-        </LikedBandsBox>
-        <DisikedBandsBox>
+        <LikedBandsBox
+          focusForDetails={focusForDetails}
+          hideDetails={hideDetails}
+          likeToDislike={likeToDislike}
+          likedBands={likedBands}
+          removedLikedBand={removedLikedBand}
+          showDetails={showDetails}
+        />
+        <DisikedBandsBoxFormatting>
           {dislikedBands.map((band) => (
             <BandBox>
               {band}
@@ -172,8 +140,8 @@ export const HomePage = (): JSX.Element => {
               </StyledRemoveButton>
             </BandBox>
           ))}
-        </DisikedBandsBox>
-        <RecommendedBandsBox>
+        </DisikedBandsBoxFormatting>
+        <RecommendedBandsBoxFormatting>
           {isLoading ? (
             <LoadingImage src={loading} alt="loading" />
           ) : (
@@ -198,7 +166,7 @@ export const HomePage = (): JSX.Element => {
               ))}
             </>
           )}
-        </RecommendedBandsBox>
+        </RecommendedBandsBoxFormatting>
         <></>
       </BandGrid>
     </>
@@ -230,15 +198,6 @@ const ColumnTitle = styled.div`
 const HeaderImage = styled.img`
   height: 20vmin;
   pointer-events: none;
-`;
-
-const LoadingImage = styled.img`
-  width: 10vw;
-  height: 3vw;
-`;
-
-const DescriptionText = styled.div`
-  font-size: 11px;
 `;
 
 export const StyledGenerateButton = styled.button`

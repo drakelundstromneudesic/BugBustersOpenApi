@@ -20,15 +20,15 @@ const BandsBox = styled.div`
   min-height: 70px;
 `;
 
-export const LikedBandsBox = styled(BandsBox)`
+export const LikedBandsBoxFormatting = styled(BandsBox)`
   background-color: ${LIGHT_GREEN};
 `;
 
-export const DisikedBandsBox = styled(BandsBox)`
+export const DisikedBandsBoxFormatting = styled(BandsBox)`
   background-color: ${LIGHT_RED};
 `;
 
-export const RecommendedBandsBox = styled(BandsBox)`
+export const RecommendedBandsBoxFormatting = styled(BandsBox)`
   background-color: ${SKY_BLUE};
 `;
 
@@ -68,4 +68,13 @@ export const StyledRemoveButton = styled(StyledButton)`
   background-color: ${GREY};
   color: ${BLACK};
   border-color: ${SILVER};
+`;
+
+export const DescriptionText = styled.div`
+  font-size: 11px;
+`;
+
+export const LoadingImage = styled.img`
+  width: 10vw;
+  height: 3vw;
 `;

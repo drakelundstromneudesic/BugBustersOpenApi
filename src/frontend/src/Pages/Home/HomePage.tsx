@@ -27,6 +27,7 @@ import {
 import { BandDetails } from "../../Models/BandDetails";
 import { LikedBandsBox } from "./Components/LikedBandsBox";
 import { DislikedBandsBox } from "./Components/DislikedBandsBox";
+import { RecommendedBandsBox } from "./Components/RecommendedBandsBox";
 
 export const HomePage = (): JSX.Element => {
   const [likedBands, setLikedBands] = useState<string[]>([]);
@@ -137,46 +138,16 @@ export const HomePage = (): JSX.Element => {
           removedDislikedBand={removedDisikedBand}
           showDetails={showDetails}
         />
-        {/* <DisikedBandsBoxFormatting>
-          {dislikedBands.map((band) => (
-            <BandBox>
-              {band}
-              <StyledLikeButton onClick={() => dislikeToLike(band)}>
-                like
-              </StyledLikeButton>
-              <StyledRemoveButton onClick={() => removedDisikedBand(band)}>
-                remove
-              </StyledRemoveButton>
-            </BandBox>
-          ))}
-        </DisikedBandsBoxFormatting> */}
-        <RecommendedBandsBoxFormatting>
-          {isLoading ? (
-            <LoadingImage src={loading} alt="loading" />
-          ) : (
-            <>
-              {recommendedBands.map((band) => (
-                <BandBox>
-                  {band}
-                  <StyledLikeButton onClick={() => recommendedToLike(band)}>
-                    like
-                  </StyledLikeButton>
-                  <StyledDislikeButton
-                    onClick={() => recommendedToDislike(band)}
-                  >
-                    dislike
-                  </StyledDislikeButton>
-                  <StyledRemoveButton
-                    onClick={() => removedRecommendedBand(band)}
-                  >
-                    remove
-                  </StyledRemoveButton>
-                </BandBox>
-              ))}
-            </>
-          )}
-        </RecommendedBandsBoxFormatting>
-        <></>
+        <RecommendedBandsBox
+          focusForDetails={focusForDetails}
+          recommendedBands={recommendedBands}
+          recommendedToLike={recommendedToLike}
+          recommendedToDislike={recommendedToDislike}
+          hideDetails={hideDetails}
+          showDetails={showDetails}
+          removedRecommendedBand={removedRecommendedBand}
+          isLoading={isLoading}
+        />
       </BandGrid>
     </>
   );

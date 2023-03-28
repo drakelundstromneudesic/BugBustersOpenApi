@@ -1,7 +1,15 @@
 import logo from "../../Neudesic-Logo.jpg";
 import loading from "../../loading-gif.gif";
 import styled from "styled-components";
-import { BLACK, GREEN, LIGHT_GREEN, SILVER, WHITE } from "../../Style/Colors";
+import {
+  BLACK,
+  BURGUNDY,
+  DARK_RED,
+  GREEN,
+  LIGHT_GREEN,
+  SILVER,
+  WHITE,
+} from "../../Style/Colors";
 
 import { getDetails, getRecommendation } from "../../Services/BandService";
 import { useState } from "react";
@@ -24,9 +32,10 @@ export const HomePage = (): JSX.Element => {
   const [recommendedBands, setRecommendedBands] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [focusForDetails, setFocusForDetails] = useState<BandDetails>({
-    name: "qwe",
-    description: "ert",
+    name: "",
+    description: "",
   });
+  const [generateButtonError, setGenerateButtonError] = useState<string>("");
 
   const likeBand = (band: string) => setLikedBands([...likedBands, band]);
   const removedLikedBand = (band: string) =>
@@ -58,16 +67,23 @@ export const HomePage = (): JSX.Element => {
   };
 
   const generateRecommendations = async () => {
-    setIsLoading(true);
-    const data: RecommendationRequest = {
-      likes: likedBands,
-      dislikes: dislikedBands,
-      recommendations: recommendedBands,
-    };
-    const updatedRecommendations: RecommendationRequest =
-      await getRecommendation(data);
-    setIsLoading(false);
-    setRecommendedBands(updatedRecommendations.recommendations);
+    if (likedBands.length > 0) {
+      setGenerateButtonError("");
+      setIsLoading(true);
+      const data: RecommendationRequest = {
+        likes: likedBands,
+        dislikes: dislikedBands,
+        recommendations: recommendedBands,
+      };
+      const updatedRecommendations: RecommendationRequest =
+        await getRecommendation(data);
+      setIsLoading(false);
+      setRecommendedBands(updatedRecommendations.recommendations);
+    } else {
+      setGenerateButtonError(
+        "please add a liked band before using this button"
+      );
+    }
   };
 
   const showDetails = async (band: string) => {
@@ -93,9 +109,16 @@ export const HomePage = (): JSX.Element => {
         <ColumnTitle>Recommended Bands</ColumnTitle>
         <BandInput bandList={likedBands} setBandList={setLikedBands} />
         <BandInput bandList={dislikedBands} setBandList={setDislikedBands} />
-        <StyledGenerateButton onClick={() => generateRecommendations()}>
-          Generate Recommendations
-        </StyledGenerateButton>
+        <div>
+          <StyledGenerateButton onClick={() => generateRecommendations()}>
+            Generate Recommendations
+          </StyledGenerateButton>
+          {generateButtonError != "" ? (
+            <ErrorText>{generateButtonError}</ErrorText>
+          ) : (
+            <></>
+          )}
+        </div>
         <LikedBandsBox>
           {likedBands.map((band) => (
             <>
@@ -230,4 +253,10 @@ export const StyledGenerateButton = styled.button`
   background-color: ${LIGHT_GREEN};
   color: ${BLACK};
   border-color: ${GREEN};
+`;
+
+const ErrorText = styled.div`
+  font-size: small;
+  color: ${DARK_RED};
+  font-weight: bolder;
 `;

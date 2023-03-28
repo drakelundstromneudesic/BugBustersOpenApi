@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
-import { BLACK, LIGHT_TURQUOISE, SILVER } from "../../../Style/Colors";
+import { BLACK, LIGHT_TURQUOISE } from "../../../Style/Colors";
 
 type BandInputProps = {
   readonly bandList: string[];
@@ -27,7 +27,7 @@ export const BandInput = ({
     <StyledForm
       onSubmit={handleSubmit((band) => {
         addBand(band);
-        reset()
+        reset();
       })}
     >
       <StyledTextInput

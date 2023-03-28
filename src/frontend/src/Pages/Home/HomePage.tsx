@@ -1,9 +1,7 @@
 import logo from "../../Neudesic-Logo.jpg";
-import loading from "../../loading-gif.gif";
 import styled from "styled-components";
 import {
   BLACK,
-  BURGUNDY,
   DARK_RED,
   GREEN,
   LIGHT_GREEN,
@@ -15,15 +13,7 @@ import { getDetails, getRecommendation } from "../../Services/BandService";
 import { useState } from "react";
 import { BandInput } from "./Components/BandInput";
 import { RecommendationRequest } from "../../Models/RecommendationRequest";
-import {
-  BandBox,
-  DislikedBandsBoxFormatting,
-  LoadingImage,
-  RecommendedBandsBoxFormatting,
-  StyledDislikeButton,
-  StyledLikeButton,
-  StyledRemoveButton,
-} from "./Components/BandsBoxComponents";
+
 import { BandDetails } from "../../Models/BandDetails";
 import { LikedBandsBox } from "./Components/LikedBandsBox";
 import { DislikedBandsBox } from "./Components/DislikedBandsBox";

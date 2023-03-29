@@ -150,9 +150,8 @@ namespace api.Controllers
             IRestClient client = new RestClient(baseUrl);
             RestRequest request = new RestRequest("completions", Method.Post);
 
-            string authToken = Configuration["API_TOKEN"];
 
-            request.AddHeader("Authorization", $"Bearer {authToken}");
+            request.AddHeader("Authorization", $"Bearer {OpenAiAuthToken}");
             request.AddHeader("Content-Type", "application/json");
 
             MessagesObject message = new MessagesObject("user", messageBody);

@@ -120,26 +120,29 @@ namespace api.Controllers
 
             string finalMessage = $"{messageLikes}{messageDislikes}{messageUsedRecommendations}{messageEnd}";
 
-            OpenAiPostResponse res = await CallOpenAi(finalMessage);
+            //OpenAiPostResponse res = await CallOpenAi(finalMessage);
 
-            return Ok(res.choices[0].message.content);
+            //return Ok(res.choices[0].message.content);
+            var res = await CallOpenAi(finalMessage);
+            return Ok(res);
         }
 
-        [HttpPost("detail")]
-        public async Task<IActionResult> PostDetails(PostBandDetails requestIn)
-        {
-            string message = $"Give me a short description of the band {requestIn.Name} and their 3 best songs for a new listener.";
+        //[HttpPost("detail")]
+        //public async Task<IActionResult> PostDetails(PostBandDetails requestIn)
+        //{
+        //    string message = $"Give me a short description of the band {requestIn.Name} and their 3 best songs for a new listener.";
 
-            OpenAiPostResponse res = await CallOpenAi(message);
+        //    OpenAiPostResponse res = await CallOpenAi(message);
 
-            PostBandDetails response = requestIn;
-            response.Description = res.choices[0].message.content;
+        //    PostBandDetails response = requestIn;
+        //    response.Description = res.choices[0].message.content;
 
-            return Ok(response);
-        }
+        //    return Ok(response);
+        //}
 
 
-        private async Task<OpenAiPostResponse> CallOpenAi(string messageBody)
+        //private async Task<OpenAiPostResponse> CallOpenAi(string messageBody)
+        private async Task<RestResponse<OpenAiPostResponse>> CallOpenAi(string messageBody)
         {
 
             Uri baseUrl = new Uri("https://api.openai.com/v1/chat");
@@ -163,7 +166,8 @@ namespace api.Controllers
 
             OpenAiPostResponse res = JsonSerializer.Deserialize<OpenAiPostResponse>(response.Content);
 
-            return res;
+            //return res;
+            return response;
 
         }
 

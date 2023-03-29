@@ -6,6 +6,8 @@ using api.Models;
 using System.Threading.Tasks;
 using System.Text.Json;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Azure.Cosmos;
+using System.Linq;
 
 namespace api.Controllers
 {
@@ -13,11 +15,40 @@ namespace api.Controllers
     [ApiController]
     public class BandsController : Controller
     {
+
         private readonly IConfiguration Configuration;
 
-        public BandsController(IConfiguration configuration)
+        private readonly string OpenAiAuthToken;
+        private readonly CosmosClient cosmos;
+        private readonly Container recommendations;
+
+
+        public BandsController(CosmosClient cosmosClient, OpenAiConfig openAiConfig)
         {
-            Configuration = configuration;
+            OpenAiAuthToken = openAiConfig.ApiKey;
+
+            cosmos = cosmosClient; 
+            this.recommendations = cosmos.GetContainer("bug-busters-db", "Recommendations");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetTest()
+        {
+            try
+            {
+                var test = recommendations.GetItemLinqQueryable<Test>(true)
+                    .Where(stream => stream.userId == "test" )
+                    .AsEnumerable();
+
+                if (test.Any()) return Ok(test);
+
+                return NoContent();
+            }
+            catch
+            {
+                return StatusCode(500, "Internal Server Error");
+                throw;
+            }
         }
 
         [HttpPost]

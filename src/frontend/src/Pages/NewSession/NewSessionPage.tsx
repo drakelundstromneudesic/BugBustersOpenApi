@@ -7,7 +7,7 @@ import { BLACK, LIGHT_TURQUOISE, SILVER } from "../../Style/Colors";
 export const NewSessionPage = (): JSX.Element => {
   const { handleSubmit, register, reset } = useForm<SessionInformation>();
 
-  // const Session = (session: SessionInformation) => {};
+  const Session = (session: SessionInformation) => {};
 
   return (
     <StyledForm

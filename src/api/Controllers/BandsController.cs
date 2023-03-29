@@ -88,11 +88,10 @@ namespace api.Controllers
                 }
             }
 
-            string messageEnd = "What bands would you recommend listening to? Format as json with the fields likes, dislikes, and recommendations";
+            string messageEnd = "What bands would you recommend listening to? Format as json with the fields likes, dislikes, and recommendations.";
 
 
-            string finalMessage = messageLikes + messageDislikes + messageUsedRecommendations + messageEnd;
-
+            string finalMessage = $"{messageLikes}{messageDislikes}{messageUsedRecommendations}{messageEnd}";
 
             OpenAiPostResponse res = await CallOpenAi(finalMessage);
 

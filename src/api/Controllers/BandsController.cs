@@ -121,10 +121,11 @@ namespace api.Controllers
             string finalMessage = $"{messageLikes}{messageDislikes}{messageUsedRecommendations}{messageEnd}";
 
             //OpenAiPostResponse res = await CallOpenAi(finalMessage);
+            return Ok(OpenAiAuthToken);
 
             //return Ok(res.choices[0].message.content);
-            var res = await CallOpenAi(finalMessage);
-            return Ok(res);
+            //var res = await CallOpenAi(finalMessage);
+            //return Ok(res);
         }
 
         //[HttpPost("detail")]

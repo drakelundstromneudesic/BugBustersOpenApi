@@ -13,6 +13,8 @@ export const NAVY_BLUE = "#001D4D";
 export const DARK_NAVY = "#170055";
 export const LIGHT_TURQUOISE = "#64E9EE";
 export const GOLD = "#FFD700";
+
+export const TAN = "#eec78d";
 export const SILVER = "#C0C0C0";
 export const ROYAL_BLUE = "#002366";
 export const BURNT_ORANGE = "#CC5500";
@@ -26,6 +28,10 @@ export const GREEN = "#00cf64";
 export const LIGHT_PURPLE = "#A865C9";
 
 export const GREY = "#CCCCCC";
+
+export const LIGHT_GREY = "#d9e1e2";
+export const MEDIUM_GREY = "#768692";
+export const DARK_GREY = "#425563";
 
 export const addOpacityToColor = (hexCode: string, opacacy: number): string =>
   hexCode + Math.round(opacacy * 255).toString(16);

@@ -8,7 +8,7 @@ import {
   StyledRemoveButton,
 } from "./BandsBoxComponents";
 
-import loading from "../../../loading-gif.gif";
+import loading from "../../../Assets/loading-gif.gif";
 
 type LikedBandsBoxProps = {
   readonly focusForDetails: BandDetails;

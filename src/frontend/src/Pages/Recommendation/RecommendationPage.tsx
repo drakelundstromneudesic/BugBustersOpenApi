@@ -1,4 +1,4 @@
-import logo from "../../Neudesic-Logo.jpg";
+import logo from "../../Assets/Neudesic-Logo.jpg";
 import styled from "styled-components";
 import {
   BLACK,
@@ -19,7 +19,7 @@ import { LikedBandsBox } from "./Components/LikedBandsBox";
 import { DislikedBandsBox } from "./Components/DislikedBandsBox";
 import { RecommendedBandsBox } from "./Components/RecommendedBandsBox";
 
-export const HomePage = (): JSX.Element => {
+export const RecommendationPage = (): JSX.Element => {
   const [likedBands, setLikedBands] = useState<string[]>([]);
   const [dislikedBands, setDislikedBands] = useState<string[]>([]);
   const [recommendedBands, setRecommendedBands] = useState<string[]>([]);

@@ -112,14 +112,14 @@ namespace api.Controllers
         }
 
 
-        private async Task<OpenAiPostResponse>  CallOpenAi(string messageBody)
+        private async Task<OpenAiPostResponse> CallOpenAi(string messageBody)
         {
 
             Uri baseUrl = new Uri("https://api.openai.com/v1/chat");
             IRestClient client = new RestClient(baseUrl);
             RestRequest request = new RestRequest("completions", Method.Post);
 
-            string authToken = Configuration["Test_String"];
+            string authToken = Configuration["API_TOKEN"];
 
             request.AddHeader("Authorization", $"Bearer {authToken}");
             request.AddHeader("Content-Type", "application/json");

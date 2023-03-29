@@ -38,8 +38,8 @@ namespace api
                         builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
                     });
             });
-            services.AddSingleton<CosmosClient>(x => new CosmosClient(Configuration.GetConnectionString("COSMOS_CONNECTION_STRING")));
-            services.AddSingleton<OpenAiConfig>(x => new OpenAiConfig(Configuration.GetConnectionString("API_TOKEN")));
+            //services.AddSingleton<CosmosClient>(x => new CosmosClient(Configuration.GetConnectionString("COSMOS_CONNECTION_STRING")));
+            //services.AddSingleton<OpenAiConfig>(x => new OpenAiConfig(Configuration.GetConnectionString("API_TOKEN")));
 
         }
 

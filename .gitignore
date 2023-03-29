@@ -499,3 +499,7 @@ FodyWeavers.xsd
 *.sln.iml
 
 
+src/api/appsettings.Development.json
+.gitignore
+src/api/appsettings.Development.json
+src/api/appsettings.json

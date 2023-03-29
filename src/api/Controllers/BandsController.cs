@@ -15,19 +15,15 @@ namespace api.Controllers
     [ApiController]
     public class BandsController : Controller
     {
-
-        private readonly IConfiguration Configuration;
-
         private readonly string OpenAiAuthToken;
         private readonly CosmosClient cosmos;
         private readonly Container recommendations;
 
-
-        public BandsController(CosmosClient cosmosClient, OpenAiConfig openAiConfig)
+        public BandsController(IConfiguration configuration)
         {
-            OpenAiAuthToken = openAiConfig.ApiKey;
+            OpenAiAuthToken = configuration["API_TOKEN"];
 
-            cosmos = cosmosClient; 
+            cosmos = new CosmosClient(configuration["COSMOS_CONNECTION_STRING"]);
             this.recommendations = cosmos.GetContainer("bug-busters-db", "Recommendations");
         }
 
@@ -37,7 +33,7 @@ namespace api.Controllers
             try
             {
                 var test = recommendations.GetItemLinqQueryable<Test>(true)
-                    .Where(stream => stream.userId == "test" )
+                    .Where(stream => stream.userId == "test")
                     .AsEnumerable();
 
                 if (test.Any()) return Ok(test);
